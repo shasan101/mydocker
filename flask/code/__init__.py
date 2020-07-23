@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = os.environ.get('DB_HOST')
-app.config['MYSQL_USER'] = os.environ.get('DB_USER')
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_ROOT_PASSWORD')
 app.config['MYSQL_DB'] = os.environ.get('MYSQL_DATABASE')
 
@@ -18,7 +18,7 @@ def index():
         firstName = details['fname']
         lastName = details['lname']
         cur = mysql.connection.cursor()
-        cur.execute('CREATE TABLE MyUsers ( firstname VARCHAR(30) NOT NULL,  lastname VARCHAR(30) NOT NULL);')
+#        cur.execute('CREATE TABLE MyUsers ( firstname VARCHAR(30) NOT NULL,  lastname VARCHAR(30) NOT NULL);')
         cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
         mysql.connection.commit()
         cur.close()

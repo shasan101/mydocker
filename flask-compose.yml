@@ -1,0 +1,20 @@
+version: "3"
+services:
+  webapp:
+    build:
+      context: ./flask/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:5000"
+    env_file: 
+      - .env
+    links:
+      - mysqldb
+  mysqldb:
+    build:
+      context: ./mysql/
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
