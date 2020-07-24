@@ -21,5 +21,7 @@ services:
     networks:
       - my-bridge1
 
+
 networks:
   my-bridge1:
+    driver: bridge
