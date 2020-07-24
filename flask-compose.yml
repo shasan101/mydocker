@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   webapp:
     build:
@@ -8,15 +8,18 @@ services:
       - "8000:5000"
     env_file: 
       - ./.env
-    links:
-      - mysqldb
     depends_on:
       - mysqldb
+    networks:
+      - my-bridge1
   mysqldb:
     build:
       context: ./mysql/
       dockerfile: Dockerfile
-    ports:
-      - "3306:3306"
     env_file:
       - ./.env
+    networks:
+      - my-bridge1
+
+networks:
+  my-bridge1:
