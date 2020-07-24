@@ -7,8 +7,10 @@ services:
     ports:
       - "8000:5000"
     env_file: 
-      - .env
+      - ./.env
     links:
+      - mysqldb
+    depends_on:
       - mysqldb
   mysqldb:
     build:
@@ -17,4 +19,4 @@ services:
     ports:
       - "3306:3306"
     env_file:
-      - .env
+      - ./.env

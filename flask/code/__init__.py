@@ -18,7 +18,7 @@ def index():
         firstName = details['fname']
         lastName = details['lname']
         cur = mysql.connection.cursor()
-#        cur.execute('CREATE TABLE MyUsers ( firstname VARCHAR(30) NOT NULL,  lastname VARCHAR(30) NOT NULL);')
+        cur.execute('CREATE TABLE IF NOT EXISTS MyUsers ( firstname VARCHAR(30) NOT NULL,  lastname VARCHAR(30) NOT NULL);')
         cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
         mysql.connection.commit()
         cur.close()
