@@ -5,10 +5,6 @@ jobs:
       - image: circleci/golang:1.13-alpine
     steps:
       - checkout
-      # ... steps for building/testing app ...
-
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run: pwd
       - run:
           name: listing contents
