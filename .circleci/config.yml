@@ -9,8 +9,8 @@ jobs:
       - run:
           name: listing contents
           command: |
-            ls;
-            docker build --file ../flask/Dockerfile --tag flask-app:stable .
-            docker build --file ../mysql/Dockerfile --tag flask-mysql:stable .
+            ls
+            docker build --file ./flask/Dockerfile --tag flask-app:stable .
+            docker build --file ./mysql/Dockerfile --tag flask-mysql:stable .
 
 
