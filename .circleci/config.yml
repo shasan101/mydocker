@@ -9,8 +9,8 @@ jobs:
           name: listing contents
           command: |
             ls
-            docker build --file ./flask/Dockerfile --tag flask-app:stable .
-            docker build --file ./mysql/Dockerfile --tag flask-mysql:stable .
+            cd flask/ && docker build --file ./flask/Dockerfile --tag flask-app:stable .
+            cd ../mysql && docker build --file ./mysql/Dockerfile --tag flask-mysql:stable .
             docker network create --attachable --driver bridge my-net
             docker run -dt flask-mysql:stable --hostname=mysqldb --name flask-mysql --network my-net
             docker run -dt flask-app:stable --hostname=flask-app --name flask-app -p 8080:5000 --network my-net
