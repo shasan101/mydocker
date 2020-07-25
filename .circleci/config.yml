@@ -1,8 +1,7 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - machine: true
+    machine: true
     steps:
       - checkout
       - run: pwd
