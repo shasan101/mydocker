@@ -11,8 +11,8 @@ jobs:
             ls
             cd flask/ && docker build --file ./Dockerfile --tag flask-app:stable .
             cd ../mysql && docker build --file ./Dockerfile --tag flask-mysql:stable .
-            docker network create --attachable --driver bridge my-net
-            docker run -d --hostname mysqldb --name flask-mysql --network my-net flask-mysql:stable
-            docker run -d --hostname flask-app --name flask-app -p 8080:5000 --network my-net flask-app:stable
-            curl http://127.0.0.1:8080
+      - run: docker network create --attachable --driver bridge my-net
+      - run: docker run -d --hostname mysqldb --name flask-mysql --network my-net flask-mysql:stable
+      - run: docker run -d --hostname flask-app --name flask-app -p 8080:5000 --network my-net flask-app:stable
+      - run: curl "http://127.0.0.1:8080"
 
