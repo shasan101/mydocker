@@ -12,6 +12,8 @@ services:
       - mysqldb
     networks:
       - my-bridge1
+    volumes:
+      - "./flask/flask-data:/usr/src"
   mysqldb:
     build:
       context: ./mysql/
@@ -20,6 +22,8 @@ services:
       - ./.env
     networks:
       - my-bridge1
+    volumes:
+      - "./mysql/db-data:/var/lib/mysql"
 
 
 networks:
